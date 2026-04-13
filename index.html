@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LeadGen Restaurant</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #c8973a;
+    --dark: #1a1a1a;
+    --cream: #f9f4ec;
+    --text: #444;
+    --light-text: #888;
+  }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    color: var(--text);
+    background: #fff;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 60px;
+    background: rgba(20,20,20,0.85);
+    backdrop-filter: blur(6px);
+  }
+
+  .logo {
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  /* .logo-icon {
+    width: 30px; height: 30px;
+    border: 2px solid var(--gold);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    color: var(--gold);
+    font-weight: 700;
+  } */
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: #fff; }
+
+  .btn-book-nav {
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    text-decoration: none;
+  }
+
+  /* ── HERO ── */
+  #home {
+    height: 100vh;
+    background: url('D:/ECD Assignment 2/images-20260413T135926Z-3-001/images/background/agency-slider-04.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 80px;
+    position: relative;
+  }
+
+  #home::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,0.4);
+  }
+
+  .hero-box {
+    position: relative;
+    z-index: 2;
+    background: rgba(220, 80, 60, 0.9);
+    padding: 50px 45px;
+    max-width: 420px;
+    border: 2px solid rgba(255,255,255,0.4);
+  }
+
+  .hero-box h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .hero-box p {
+    color: rgba(255,255,255,0.85);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .btn-outline-white {
+    display: inline-block;
+    border: 1.5px solid #fff;
+    color: #fff;
+    padding: 10px 22px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-outline-white:hover { background: #fff; color: #d9534f; }
+
+  /* ── SECTION BASE ── */
+  section { padding: 90px 60px; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--dark);
+    margin-bottom: 14px;
+  }
+
+  .section-subtitle {
+    font-size: 14px;
+    color: var(--light-text);
+    line-height: 1.7;
+    max-width: 560px;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .about-images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 200px 160px;
+    gap: 8px;
+  }
+
+  .about-images img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  .about-images img:first-child {
+    grid-row: 1 / 3;
+  }
+
+  .about-text .highlight {
+    color: var(--gold);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .about-text p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 28px;
+  }
+
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+    padding: 11px 22px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .btn-gold:hover { background: var(--gold); color: #fff; }
+
+  /* ── FEATURES ── */
+  #features {
+    background: #fafafa;
+    padding: 70px 60px;
+  }
+
+ .features-grid {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin-top: 50px;
+  text-align: center;
+}
+  .feature-icon {
+    width: 60px; height: 60px;
+    margin: 0 auto 16px;
+  }
+
+  .feature-icon img { width: 100%; height: 100%; object-fit: contain; }
+
+  .features-grid h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--dark);
+    margin-bottom: 10px;
+  }
+
+  .features-grid p {
+    font-size: 13px;
+    color: var(--light-text);
+    line-height: 1.7;
+  }
+
+  .feature-icon-svg {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 16px;
+  display: block;      
+}
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--cream);
+    padding: 30px 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+    gap: 20px;
+  }
+
+  .stats-bar span {
+    font-size: 14px;
+    color: #999;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── SPECIALTY ── */
+  #specialty {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 0;
+  }
+
+.specialty-text {
+  background: var(--cream);
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* 👈 centers everything horizontally */
+  justify-content: center;
+  text-align: center;       /* 👈 centers all text */
+}
+
+.chef-hat {
+  width: 50px !important;
+  height: auto !important;
+  max-width: 50px !important;
+  margin-bottom: 16px;
+  object-fit: contain;
+  display: block;
+}
+
+  .specialty-text .tag {
+    font-size: 13px;
+    color: var(--light-text);
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  .specialty-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: #3a2b1a;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+.specialty-text p {
+  max-width: 340px;
+  text-align: center;       /* 👈 add this */
+  font-size: 14px;
+  color: #888;
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+  #specialty img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 420px;
+  }
+
+  /* ── MENU ── */
+  #menu {
+  text-align: center;
+  padding: 90px 60px;
+  background: url('restaurant-menu-bg.jpg') center/cover no-repeat;
+  position: relative;
+}
+
+  .menu-header { margin-bottom: 40px; }
+  .menu-header .section-subtitle { margin: 10px auto 0; }
+
+  .menu-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .menu-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    padding: 0 8px 12px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #aaa;
+  }
+
+  .menu-tab.active {
+    border-bottom-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .menu-tab svg { width: 32px; height: 32px; stroke: currentColor; fill: none; }
+
+  .menu-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 60px;
+    text-align: left;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .menu-item {
+    border-bottom: 1px dashed #e8e8e8;
+    padding-bottom: 16px;
+  }
+
+  .menu-item-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .menu-item-header h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--dark);
+  }
+
+  .menu-item-header .price {
+    font-size: 15px;
+    color: var(--dark);
+    font-weight: 700;
+  }
+
+  .menu-item p {
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.6;
+  }
+
+  /* ── GALLERY ── */
+  #gallery {
+    padding: 70px 0;
+    text-align: center;
+  }
+
+  #gallery .section-title, #gallery .section-subtitle {
+    margin-left: auto; margin-right: auto;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 220px 220px;
+    gap: 6px;
+    margin-top: 40px;
+  }
+
+  .gallery-grid img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  .gallery-grid img:first-child { grid-row: 1 / 3; }
+
+  /* ── CHEF ── */
+  #chefs {
+    padding: 90px 60px;
+    text-align: center;
+  }
+
+  .chef-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 700px;
+    margin: 40px auto 0;
+    background: var(--cream);
+    overflow: hidden;
+  }
+
+  .chef-info {
+    padding: 50px 40px;
+    text-align: left;
+  }
+
+  .chef-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+
+  .chef-info .title {
+    font-size: 13px;
+    color: var(--light-text);
+    margin-bottom: 20px;
+  }
+
+  .chef-info p {
+    font-size: 13px;
+    color: #777;
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+
+  .chef-signature {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold);
+    margin-top: 24px;
+    font-style: italic;
+  }
+
+  .chef-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    min-height: 340px;
+  }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: url('https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=1400&q=80') center/cover no-repeat;
+    position: relative;
+    text-align: center;
+    padding: 90px 60px;
+  }
+
+  .cta-banner::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,0.6);
+  }
+
+  .cta-banner-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .cta-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    color: #fff;
+    margin-bottom: 24px;
+  }
+
+  /* ── BLOG ── */
+  #blog {
+    padding: 90px 60px;
+    text-align: center;
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+    text-align: left;
+  }
+
+  .blog-card img {
+    width: 100%; height: 200px;
+    object-fit: cover;
+    margin-bottom: 16px;
+  }
+
+  .blog-card h4 {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--dark);
+    margin-bottom: 10px;
+  }
+
+  .blog-card p {
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.7;
+  }
+
+  /* ── PROMO STRIP ── */
+  .promo-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 380px;
+  }
+
+  .promo-food-images {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
+
+  .promo-food-images img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  .promo-text {
+    background: var(--cream);
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .promo-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    color: #3a2b1a;
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+
+  .promo-text .sub {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 14px;
+  }
+
+  .promo-text p {
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+
+  /* ── CONTACT FOOTER ── */
+  .contact-bar {
+    padding: 60px 60px 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+  }
+
+  .contact-item svg {
+    width: 30px; height: 30px;
+    stroke: var(--gold);
+    fill: none;
+    margin-bottom: 10px;
+  }
+
+  .contact-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+
+  .contact-item p {
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.7;
+  }
+
+  /* ── BOOKING ── */
+  #contact {
+    background: url('https://images.unsplash.com/photo-1547592180-85f173990554?w=1400&q=80') center/cover no-repeat;
+    position: relative;
+    padding: 90px 60px;
+    text-align: center;
+  }
+
+  #contact::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,0.65);
+  }
+
+  .booking-form {
+    position: relative;
+    z-index: 2;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .booking-form h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .booking-form .sub {
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+
+  .booking-form input,
+  .booking-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    outline: none;
+    border-radius: 2px;
+    transition: border-color 0.2s;
+  }
+
+  .booking-form input::placeholder,
+  .booking-form textarea::placeholder { color: rgba(255,255,255,0.55); }
+
+  .booking-form input:focus,
+  .booking-form textarea:focus { border-color: var(--gold); }
+
+  .booking-form textarea { height: 110px; resize: none; }
+
+  .btn-submit {
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    padding: 14px 40px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 8px;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+
+  .btn-submit:hover { background: #a97a28; }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 30px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: #aaa;
+    text-decoration: none;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-copy { font-size: 13px; color: #bbb; }
+
+  .social-links {
+    display: flex;
+    gap: 14px;
+  }
+
+  .social-links a {
+    width: 32px; height: 32px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: #aaa;
+    font-size: 13px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .social-links a:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section, #menu, #blog, #chefs, #gallery, #contact { padding: 60px 24px; }
+    #about, #specialty, .chef-card, .promo-strip { grid-template-columns: 1fr; }
+    .features-grid, .blog-grid, .contact-bar { grid-template-columns: 1fr 1fr; }
+    .menu-items { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-grid img:first-child { grid-row: auto; }
+    footer { flex-direction: column; text-align: center; }
+    .hero-box { max-width: 90%; }
+    #home { padding-right: 0; justify-content: center; padding: 0 20px; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="logo">
+    <div class="logo-icon"></div>
+    LeadGen
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#chefs">Chefs</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="btn-book-nav">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-box">
+    <h1>Delicious Breakfast</h1>
+    <p>Experience the finest morning meals crafted with love and the freshest local ingredients, served fresh every day.</p>
+    <a href="#menu" class="btn-outline-white">Discover Menu</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-images">
+    <img src="D:/ECD Assignment 2/images-20260413T135926Z-3-001/images/content-50.jpg" />
+  </div>
+  <div class="about-text">
+    <h2 class="section-title">The best food in town at one of the best locations!!!</h2>
+    <p class="highlight">We bring you an extraordinary dining experience in the heart of the city, combining tradition with modern culinary arts.</p>
+    <p>Our kitchen is led by award-winning chefs who source only the finest seasonal ingredients. Every plate that leaves our kitchen is a work of art, crafted to delight all your senses. We invite you to sit back, relax, and savor every bite.</p>
+    <a href="#menu" class="btn-gold">Explore Menu →</a>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<div id="services">
+  <section id="features">
+    <div class="features-grid">
+      <div>
+        <img src="restaurant-service-icon02.png" class="feature-icon-svg" alt="Breakfast" />
+          <circle cx="12" cy="12" r="9"/><path d="D:/ECD Assignment 2/images-20260413T135926Z-3-001/images/icons/restaurant-service-icon02.png"/>
+        </svg>
+        <h3>Lunch</h3>
+        <p>Enjoy a hearty midday meal from our diverse and flavorful lunch menu.</p>
+      </div>
+      <div>
+        <img src="restaurant-service-icon03.png" class="feature-icon-svg" alt="Dinner" />
+          <path d="M2 20h20M6 20V10m4 10V4m4 16V8m4 12V6"/>
+        </svg>
+        <h3>Dinner</h3>
+        <p>An unforgettable evening dining experience with fine cuisine and ambiance.</p>
+      </div>
+      <div>
+        <img src="restaurant-service-icon04.png" class="feature-icon-svg" alt="Drinks" />
+          <path d="M8 21h8M12 3v4M6 7h12l-1 9H7L6 7z"/>
+        </svg>
+        <h3>Drinks</h3>
+        <p>Craft cocktails, wines, and refreshing beverages to complement your meal.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- SPECIALTY -->
+<section id="specialty">
+  <div class="specialty-text">
+<img src="restaurant-about-icon.png" style="width: 60px; height: 60px; object-fit: contain; display: block; margin: 0 auto -150px auto;" alt="logo" />
+    <p class="tag">Specialty of the Restaurant</p>
+    <h2>Discover Our Tasty Meals</h2>
+    <p>Our chefs blend traditional recipes with modern techniques to bring you dishes that are truly one of a kind. Every meal tells a story — and we want you to be part of it.</p>
+    <a href="#contact" class="btn-gold">Book a Table →</a>
+  </div>
+  <img src="D:\ECD Assignment 2\images-20260413T135926Z-3-001\images\background\restaurant-about-bg.jpg" alt="Specialty dish" />
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="menu-header">
+    <h2 class="section-title">Main Menu</h2>
+    <p class="section-subtitle">Explore our carefully curated selection of dishes, crafted fresh daily from locally sourced seasonal ingredients.</p>
+  </div>
+
+  <div class="menu-tabs">
+    <div class="menu-tab active" onclick="setTab(this, 'starters')">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+      Starters
+    </div>
+    <div class="menu-tab" onclick="setTab(this, 'meat')">
+      <svg viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 12c4-8 12-8 16 0s-12 8-16 0z"/></svg>
+      Meat
+    </div>
+    <div class="menu-tab" onclick="setTab(this, 'fish')">
+      <svg viewBox="0 0 24 24"><path d="M3 12c3-6 9-6 12 0 3 6 0 8-5 8s-7-2-7-8z"/><circle cx="16" cy="10" r="1" fill="currentColor"/></svg>
+      Fish
+    </div>
+    <div class="menu-tab" onclick="setTab(this, 'vegetarian')">
+      <svg viewBox="0 0 24 24"><path d="M12 3C7 3 4 8 4 12c0 4 3 7 8 7s8-3 8-7c0-4-3-9-8-9z"/></svg>
+      Vegetarian
+    </div>
+    <div class="menu-tab" onclick="setTab(this, 'dessert')">
+      <svg viewBox="0 0 24 24"><path d="M8 21h8M12 3v4M6 7h12l-1 9H7z"/></svg>
+      Dessert
+    </div>
+    <div class="menu-tab" onclick="setTab(this, 'drinks')">
+      <svg viewBox="0 0 24 24"><path d="M8 21h8M6 3h12l-2 9H8L6 3zM10 12v5M14 12v5"/></svg>
+      Drinks
+    </div>
+  </div>
+
+  <div class="menu-items" id="menu-items">
+    <!-- Starters (default) -->
+    <div class="menu-item">
+      <div class="menu-item-header"><h4>Green Salad</h4><span class="price">$12.00</span></div>
+      <p>Fresh garden greens tossed with our house vinaigrette, cherry tomatoes, and croutons.</p>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-header"><h4>Appeteaser Platter</h4><span class="price">$23.00</span></div>
+      <p>A curated selection of bruschetta, olives, dips and artisan bread for the table.</p>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-header"><h4>Eggs Any Style</h4><span class="price">$23.00</span></div>
+      <p>Choose your preparation — poached, scrambled, or fried — served with sourdough toast.</p>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-header"><h4>Spicy Mixed Olives</h4><span class="price">$53.00</span></div>
+      <p>Warm marinated olives with chili flakes, rosemary, garlic and lemon zest.</p>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-header"><h4>Chicken Wings</h4><span class="price">$45.00</span></div>
+      <p>Crispy wings glazed in our signature house sauce, served with blue cheese dip.</p>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-header"><h4>Wing Roulette</h4><span class="price">$25.00</span></div>
+      <p>Six wings, six sauces — mild to scorching hot. A daring tasting adventure.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <h2 class="section-title">Food Gallery</h2>
+  <p class="section-subtitle">A visual feast — a glimpse into our kitchen's finest creations and the flavors that await you.</p>
+  <div class="gallery-grid">
+    <img src="D:\ECD Assignment 2\images-20260413T135926Z-3-001\images\agency-work-13.jpg" alt="Noodles" />
+    <img src="D:\ECD Assignment 2\images-20260413T135926Z-3-001\images\agency-work-08.jpg" alt="Grilled chicken" />
+    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&q=80" alt="Rustic food" />
+    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&q=80" alt="Meat dish" />
+    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&q=80" alt="Green casserole" />
+    <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=500&q=80" alt="Baked fish" />
+        <img src="D:\ECD Assignment 2\images-20260413T135926Z-3-001\images\agency-work-02.jpg" alt="Rustic food" />
+
+  </div>
+</section>
+
+<!-- CHEF -->
+<section id="chefs">
+  <h2 class="section-title">Meet Our Chef</h2>
+  <p class="section-subtitle" style="margin: 10px auto 0;">Our culinary team brings decades of passion and expertise to every dish, blending tradition with innovation.</p>
+  <div class="chef-card">
+    <div class="chef-info">
+      <h3>Jeremy Dupont</h3>
+      <p class="title">Executive Chef</p>
+      <p>Trained in the finest culinary schools of France and Italy, Chef Jeremy brings over 20 years of experience to our kitchen. His philosophy is simple: the best ingredients, treated with respect.</p>
+      <p>He believes that food is about memory, culture, and love — and every plate he creates reflects that belief, from rustic comfort dishes to refined gastronomic experiences.</p>
+      <div class="chef-signature">Gustave Baron</div>
+    </div>
+    <img src="D:\ECD Assignment 2\images-20260413T135926Z-3-001\images\restaurant-chef-01.jpg" alt="Executive Chef" />
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-banner-content">
+    <h2>Amazing restaurant — come and experience inspired cooking!</h2>
+    <a href="#contact" class="btn-gold" style="display:inline-flex; margin-top: 10px;">Book a Table →</a>
+  </div>
+</div>
+
+<!-- BLOG -->
+<section id="blog">
+  <h2 class="section-title">Our Blog</h2>
+  <p class="section-subtitle" style="margin: 10px auto 0;">Stories, recipes, and behind-the-scenes glimpses from our kitchen and beyond.</p>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <img src="D:\ECD Assignment 2\images-20260413T135926Z-3-001\images\agency-content-img01.jpg" alt="Warm Hummus" />
+      <h4>Warm Hummus with Spiced Lamb</h4>
+      <p>A classic Middle Eastern comfort dish elevated with aromatic spiced lamb and freshly baked flatbread, perfect for sharing.</p>
+    </div>
+    <div class="blog-card">
+      <img src="D:\ECD Assignment 2\images-20260413T135926Z-3-001\images\agency-content-img02.jpg" alt="Moscow Mules" />
+      <h4>Scratch Made Moscow Mules</h4>
+      <p>We share the secret behind our signature house-made ginger beer and the perfectly balanced copper mug cocktail.</p>
+    </div>
+    <div class="blog-card">
+      <img src="D:\ECD Assignment 2\images-20260413T135926Z-3-001\images\agency-content-img03.jpg" alt="Apple Pie" />
+      <h4>Crumb Topped Apple Slab Pie</h4>
+      <p>Our pastry chef's legendary autumn dessert — buttery crust, spiced apples, and a golden crumb topping that never disappoints.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROMO STRIP -->
+<div class="promo-strip">
+  <div class="promo-food-images">
+    <img src="D:\ECD Assignment 2\images-20260413T135926Z-3-001\images\background\fitness-about-bg.jpg" alt="Side dish" />
+    <img src="D:\ECD Assignment 2\images-20260413T135926Z-3-001\images\background\fitness-about-bg.jpg" alt="Dessert" />
+  </div>
+  <div class="promo-text">
+    <h2>Enjoyed the meal &amp; friendly service!</h2>
+    <p class="sub">We offer a wide variety of dining experiences to suit every occasion.</p>
+    <p>Whether you're celebrating a milestone, hosting a business dinner, or simply enjoying a quiet evening out — our team is here to make every moment memorable. We take pride in every detail, from the plating to the farewell.</p>
+    <a href="#contact" class="btn-gold">Book a Table →</a>
+  </div>
+</div>
+
+<!-- CONTACT BAR -->
+<div class="contact-bar">
+  <div class="contact-item">
+    <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+    <h4>Contact Address</h4>
+    <p>301 The Greenhouse, Custard,<br />Factory, London, E2 8DY.</p>
+  </div>
+  <div class="contact-item">
+    <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.5 12 19.79 19.79 0 011.5 3.18 2 2 0 013.5 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 8.5a16 16 0 006.59 6.59l.86-.86a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+    <h4>Call Us Today!</h4>
+    <p>(M) +44 (0) 123 456 7890<br />(O) +44 (0) 123 456 7890</p>
+  </div>
+  <div class="contact-item">
+    <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    <h4>Email</h4>
+    <p>no-reply@domain.com<br />help@domain.com</p>
+  </div>
+  <div class="contact-item">
+    <svg viewBox="0 0 24 24" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+    <h4>Opening Hour</h4>
+    <p>Mon to Sat — 9 AM to 11 PM<br />Sunday 8 AM to 12 PM</p>
+  </div>
+</div>
+
+<!-- BOOKING FORM -->
+<section id="contact">
+  <div class="booking-form">
+    <h2>Book a Table</h2>
+    <p class="sub">Reserve your spot and let us take care of everything. We look forward to welcoming you.</p>
+    <input type="text" placeholder="*Your Name" />
+    <input type="email" placeholder="*Your Email" />
+    <textarea placeholder="Your Message"></textarea>
+    <button class="btn-submit" onclick="handleBook()">Book Table</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#home" class="footer-logo">
+    <div class="logo-icon" style="border-color: var(--gold); color: var(--gold); width:28px; height:28px; font-size:13px;">L</div>
+    LeadGen
+  </a>
+  <ul class="footer-links">
+    <li><a href="#">Privacy Policy</a></li>
+    <li><a href="#">Terms and Conditions</a></li>
+    <li><a href="#">Legal</a></li>
+  </ul>
+  <span class="footer-copy">© 2025 LeadGen is proudly powered by ThemeZaa.</span>
+  <div class="social-links">
+    <a href="#">f</a>
+    <a href="#">t</a>
+    <a href="#">g+</a>
+    <a href="#">in</a>
+    <a href="#">▶</a>
+  </div>
+</footer>
+
+<script>
+  const menuData = {
+    starters: [
+      { name: 'Green Salad', price: '$12.00', desc: 'Fresh garden greens tossed with our house vinaigrette, cherry tomatoes, and croutons.' },
+      { name: 'Appeteaser Platter', price: '$23.00', desc: 'A curated selection of bruschetta, olives, dips and artisan bread for the table.' },
+      { name: 'Eggs Any Style', price: '$23.00', desc: 'Choose your preparation — poached, scrambled, or fried — served with sourdough toast.' },
+      { name: 'Spicy Mixed Olives', price: '$53.00', desc: 'Warm marinated olives with chili flakes, rosemary, garlic and lemon zest.' },
+      { name: 'Chicken Wings', price: '$45.00', desc: 'Crispy wings glazed in our signature house sauce, served with blue cheese dip.' },
+      { name: 'Wing Roulette', price: '$25.00', desc: 'Six wings, six sauces — mild to scorching hot. A daring tasting adventure.' },
+    ],
+    meat: [
+      { name: 'Grilled Ribeye', price: '$58.00', desc: '300g prime ribeye, char-grilled to perfection, served with roasted vegetables.' },
+      { name: 'Lamb Chops', price: '$52.00', desc: 'Herb-crusted lamb chops with garlic mashed potatoes and mint jelly.' },
+      { name: 'Beef Tenderloin', price: '$65.00', desc: 'Slow-roasted beef tenderloin with red wine reduction and truffle butter.' },
+      { name: 'Duck Confit', price: '$48.00', desc: 'Classic French duck confit with crispy skin, lentils, and orange glaze.' },
+    ],
+    fish: [
+      { name: 'Grilled Sea Bass', price: '$42.00', desc: 'Line-caught sea bass with lemon butter, capers, and steamed seasonal greens.' },
+      { name: 'Salmon Fillet', price: '$38.00', desc: 'Pan-seared salmon with dill cream sauce and roasted new potatoes.' },
+      { name: 'Prawn Linguine', price: '$34.00', desc: 'Tiger prawns tossed with linguine in a garlic, chili, and white wine sauce.' },
+      { name: 'Fish & Chips', price: '$28.00', desc: 'Beer-battered haddock with triple-cooked chips, pea puree, and tartare sauce.' },
+    ],
+    vegetarian: [
+      { name: 'Mushroom Risotto', price: '$28.00', desc: 'Creamy arborio rice with wild mushrooms, truffle oil, and aged parmesan.' },
+      { name: 'Aubergine Parmigiana', price: '$24.00', desc: 'Layered roasted aubergine with San Marzano tomato sauce and melted mozzarella.' },
+      { name: 'Butternut Squash Ravioli', price: '$26.00', desc: 'Handmade pasta filled with butternut squash, ricotta, and sage butter.' },
+      { name: 'Caprese Stack', price: '$18.00', desc: 'Buffalo mozzarella, heirloom tomatoes, fresh basil, and aged balsamic glaze.' },
+    ],
+    dessert: [
+      { name: 'Crème Brûlée', price: '$14.00', desc: 'Classic French custard with a perfectly caramelized sugar crust.' },
+      { name: 'Chocolate Fondant', price: '$16.00', desc: 'Warm molten chocolate cake served with vanilla bean ice cream.' },
+      { name: 'Tiramisu', price: '$13.00', desc: 'House-made tiramisu with espresso-soaked ladyfingers and mascarpone cream.' },
+      { name: 'Lemon Tart', price: '$12.00', desc: 'Crisp pastry shell with tangy lemon curd and fresh cream quenelle.' },
+    ],
+    drinks: [
+      { name: 'House Red Wine', price: '$9.00', desc: 'Full-bodied Merlot with notes of cherry and dark chocolate.' },
+      { name: 'Craft Moscow Mule', price: '$12.00', desc: 'House-made ginger beer, premium vodka, fresh lime in a copper mug.' },
+      { name: 'Fresh Lemonade', price: '$6.00', desc: 'Freshly squeezed lemons with mint and a touch of honey.' },
+      { name: 'Espresso Martini', price: '$14.00', desc: 'Freshly brewed espresso, vodka, and coffee liqueur, shaken to frothy perfection.' },
+    ],
+  };
+
+  function setTab(el, key) {
+    document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    const items = menuData[key] || [];
+    document.getElementById('menu-items').innerHTML = items.map(i => `
+      <div class="menu-item">
+        <div class="menu-item-header"><h4>${i.name}</h4><span class="price">${i.price}</span></div>
+        <p>${i.desc}</p>
+      </div>
+    `).join('');
+  }
+
+  function handleBook() {
+    const name = document.querySelector('#contact input[type="text"]').value.trim();
+    const email = document.querySelector('#contact input[type="email"]').value.trim();
+    if (!name || !email) { alert('Please fill in your name and email.'); return; }
+    alert(`Thank you, ${name}! Your table request has been received. We'll confirm shortly at ${email}.`);
+    document.querySelectorAll('#contact input, #contact textarea').forEach(el => el.value = '');
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
